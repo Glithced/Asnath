@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asnath Men's Hair Salon</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #111;
+            color: #eee;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        header {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            letter-spacing: 3px;
+            color: #d4af37;
+        }
+
+        header p {
+            font-size: 1em;
+            color: #aaa;
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://advertisingweek.com/wp-content/uploads/2024/10/iStock-1973193559.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+            /* Account for fixed header */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #d4af37;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-size: 1.2em;
+        }
+
+        .btn:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+        }
+
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        #services {
+            background-color: #1a1a1a;
+        }
+
+        #services h2 {
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: #d4af37;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background-color: #222;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #d4af37;
+        }
+
+        #gallery {
+            background-color: #000;
+        }
+
+        #gallery h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #d4af37;
+        }
+
+        #gallery p {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.2em;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        footer {
+            background-color: #000;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        footer h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #d4af37;
+        }
+
+        footer p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .hero h2 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            section {
+                padding: 60px 15px;
+            }
+
+            #services h2,
+            #gallery h2 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Asnath</h1>
+        <p>Premium Men's Grooming Experience</p>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Elevate Your Style</h2>
+            <p>Expert barbers crafting sharp, modern looks for the confident man. Specializing in fades, waves, curls,
+                and precision grooming.</p>
+            <a href="#contact" class="btn">Book Now</a>
+        </div>
+    </div>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Precision Fade</h3>
+                <p>Low, mid, or high – flawless tapers and skin fades tailored to your features.</p>
+            </div>
+            <div class="service-item">
+                <h3>Waves & Texture</h3>
+                <p>360 waves, curly crops, and afro shapes with expert enhancement.</p>
+            </div>
+            <div class="service-item">
+                <h3>Beard Grooming</h3>
+                <p>Sharp line-ups, trims, and full beard sculpting for a polished finish.</p>
+            </div>
+            <div class="service-item">
+                <h3>Full Experience</h3>
+                <p>Haircut + beard + hot towel shave for the ultimate refresh.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>Style Inspiration</h2>
+        <p>Discover trending cuts: low tapers, burst fades, curly afros, waves, mohawks, and more – all on Black hair
+            textures.</p>
+        <div class="gallery-grid">
+            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/03/Afro-Taper-Fade-Haircuts-For-Men.jpg"
+                alt="Afro Taper Fade">
+            <img src="https://www.barberstake.com/wp-content/uploads/2025/02/Stylish-Black-Mens-Fade-Haircuts.jpg"
+                alt="Stylish Fade">
+            <img src="http://swankymalone.com/cdn/shop/articles/Swanky-Malone---Low-Taper-Fade-Blog_3324f34e-7415-4c7d-ad0f-0dca24ef79a4.jpg?v=1765230894"
+                alt="Low Taper Fade">
+            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/03/Afro-Fade-Haircuts.jpg.webp"
+                alt="Afro Fade">
+            <img src="https://lowfade.us/wp-content/uploads/2025/11/Low-taper-fade-curly-hair-men-1-1024x597.webp"
+                alt="Curly Low Taper Fade">
+            <img src="https://www.shutterstock.com/image-photo/black-man-portrait-eyes-haircut-600nw-2450797117.jpg"
+                alt="Portrait Fade">
+            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/04/Burst-Fade-Mohawk.jpg.webp"
+                alt="Burst Fade Mohawk">
+            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/06/Low-Taper-Fade-Haircut.jpg.webp"
+                alt="Low Taper Fade">
+            <img src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/1154290/biz_photo/bb62f905cee44c678b9c7b3c1ce79a-losblendsz-biz-photo-b8138f71391f4530a1ee5ebe748d2b-booksy.jpeg?size=640x427"
+                alt="Professional Cut">
+            <img src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/455288/biz_photo/c216de7d7c6541f3bb3f58d33fe947-clipman-wood-biz-photo-03c038fb4e0d46418378c9dba3affe-booksy.jpeg?size=640x427"
+                alt="Barber in Action">
+            <img src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/1362783/biz_photo/a29076bb21a34b1d922b813596257d-mirabal-the-barber-at-aps-barb-biz-photo-76f2ee000faf461ab90c66bdc62fab-booksy.jpeg?size=640x427"
+                alt="Clean Line Up">
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Get in Touch</h2>
+        <p>Email: info@asnathsalon.com</p>
+        <p>Phone: 083 289 6248</p>
+        <p>Address: ,Cape Town, South Africa</p>
+        <p>&copy; 2025 Asnath Men's Hair Salon. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
