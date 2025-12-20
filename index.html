@@ -186,14 +186,41 @@
 
         footer h2 {
             font-size: 2.5em;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             color: #d4af37;
         }
 
-        footer p {
+        .contact-info p {
             font-size: 1.1em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #aaa;
+        }
+
+        .social-links {
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #222;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .social-links img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
         }
 
         /* Mobile Optimizations */
@@ -215,8 +242,14 @@
             }
 
             #services h2,
-            #gallery h2 {
+            #gallery h2,
+            footer h2 {
                 font-size: 2.2em;
+            }
+
+            .social-links a {
+                width: 55px;
+                height: 55px;
             }
         }
     </style>
@@ -291,10 +324,22 @@
 
     <footer id="contact">
         <h2>Get in Touch</h2>
-        <p>Email: info@asnathsalon.com</p>
-        <p>Phone: 083 289 6248</p>
-        <p>Address: ,Cape Town, South Africa</p>
-        <p>&copy; 2025 Asnath Men's Hair Salon. All rights reserved.</p>
+        <div class="contact-info">
+            <p>Email: <a href="mailto:info@asnathsalon.com"
+                    style="color: #d4af37; text-decoration: none;">info@asnathsalon.com</a></p>
+            <p>Phone: <a href="tel:+1234567890" style="color: #d4af37; text-decoration: none;">(123) 456-7890</a></p>
+            <p>Address: 123 Style Street, City, State</p>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/jackbeauwer6/" target="_blank" aria-label="Instagram">
+                <img src="https://i.pinimg.com/736x/a3/91/bc/a391bca4494d0bf1337a90561ed97e65.jpg" alt="Instagram">
+            </a>
+            <a href="https://www.facebook.com/jackbeauwer.beauwer" target="_blank" aria-label="Facebook">
+                <img src="https://i.pinimg.com/736x/a3/91/bc/a391bca4494d0bf1337a90561ed97e65.jpg" alt="Facebook">
+            </a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.9em; color: #666;">&copy; 2025 Asnath Men's Hair Salon. All rights
+            reserved.</p>
     </footer>
 </body>
 
