@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asnath Men's Hair Salon</title>
+    <title>Asnath Premium Hair Salon</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap"
         rel="stylesheet">
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -21,326 +20,751 @@
             background-color: #111;
             color: #eee;
             line-height: 1.6;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
         }
 
         h1,
         h2,
         h3 {
             font-family: 'Playfair Display', serif;
-            font-weight: 700;
+            font-weight: 700
         }
 
         header {
             background-color: #000;
-            padding: 20px;
+            padding: 18px;
             text-align: center;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.6s ease-out;
+        }
+
+        header.visible {
+            transform: translateY(0);
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             letter-spacing: 3px;
-            color: #d4af37;
+            color: #d4af37
         }
 
         header p {
-            font-size: 1em;
-            color: #aaa;
+            color: #aaa
         }
 
         .hero {
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://advertisingweek.com/wp-content/uploads/2024/10/iStock-1973193559.jpg');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 72vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 80px;
-            /* Account for fixed header */
+            margin-top: 74px
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 820px;
             padding: 20px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+        }
+
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero h2 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            color: #fff;
+            font-size: 3em;
+            color: #fff
         }
 
         .hero p {
-            font-size: 1.4em;
-            margin-bottom: 30px;
             color: #ddd;
+            font-size: 1.1em
         }
 
         .btn {
             display: inline-block;
-            padding: 15px 30px;
-            background-color: #d4af37;
+            padding: 12px 26px;
+            background: #d4af37;
             color: #000;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            transition: all 0.3s;
-            font-size: 1.2em;
+            font-weight: 700;
+            border-radius: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #fff;
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
         }
 
         section {
-            padding: 80px 20px;
-            text-align: center;
+            padding: 70px 18px;
+            text-align: center
         }
 
         #services {
-            background-color: #1a1a1a;
+            background: #121212
         }
 
-        #services h2 {
-            font-size: 2.8em;
-            margin-bottom: 50px;
+        #services h2,
+        #gallery h2,
+        #women h2 {
             color: #d4af37;
+            font-size: 2.2em;
+            margin-bottom: 28px
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 26px;
+            max-width: 1100px;
+            margin: 0 auto
         }
 
         .service-item {
-            background-color: #222;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
+            background: #1b1b1b;
+            padding: 22px;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s;
+        }
+
+        .service-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .service-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
         }
 
         .service-item h3 {
-            font-size: 1.8em;
-            margin-bottom: 15px;
             color: #d4af37;
+            margin-bottom: 10px
+        }
+
+        .service-price {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 8px;
         }
 
         #gallery {
-            background-color: #000;
-        }
-
-        #gallery h2 {
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            color: #d4af37;
-        }
-
-        #gallery p {
-            max-width: 800px;
-            margin: 0 auto 50px;
-            font-size: 1.2em;
+            background: #000
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            max-width: 1200px;
+            margin: 0 auto
         }
 
         .gallery-grid img {
             width: 100%;
-            height: 100%;
+            height: 260px;
             object-fit: cover;
-            border-radius: 15px;
+            border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s, box-shadow 0.4s;
+            transition: transform .5s ease, box-shadow .5s ease;
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .gallery-grid img.visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .gallery-grid img:hover {
             transform: scale(1.08);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        #women {
+            background: linear-gradient(180deg, #11071a, #0b0b0b);
+        }
+
+        .women-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 10px;
+        }
+
+        .women-item {
+            background: #140b12;
+            padding: 14px;
+            border-radius: 10px;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .women-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .women-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .women-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .women-item h3 {
+            color: #f6c6d7;
+            margin-bottom: 6px;
+        }
+
+        .women-item strong {
+            color: #ffd1e6;
+        }
+
+        .booking-wrap {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #0f0f0f;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .booking-wrap.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .booking-wrap input,
+        .booking-wrap select,
+        .booking-wrap button {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border-radius: 12px;
+            border: 1px solid #222;
+            background: #111;
+            color: #eee;
+            font-size: 1.05em;
+            transition: all 0.3s;
+        }
+
+        .booking-wrap input:focus,
+        .booking-wrap select:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .booking-wrap button {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .booking-wrap button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .preview {
+            background: #0b0b0b;
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-size: 0.95em
         }
 
         footer {
-            background-color: #000;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        footer h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: #d4af37;
+            background: #000;
+            padding: 60px 18px 40px;
+            text-align: center
         }
 
         .contact-info p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
             color: #aaa;
+            margin-bottom: 12px;
+            font-size: 1.1em;
         }
 
         .social-links {
-            margin-top: 30px;
+            margin: 30px 0;
         }
 
         .social-links a {
             display: inline-block;
-            margin: 0 20px;
-            width: 60px;
-            height: 60px;
-            background-color: #222;
-            border-radius: 15px;
+            margin: 0 15px;
+            width: 56px;
+            height: 56px;
+            background: #111;
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.4s ease;
         }
 
         .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            transform: scale(1.2) rotate(8deg);
         }
 
         .social-links img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            padding: 10px;
+            object-fit: cover
         }
 
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
+        .map-embed {
+            margin: 50px auto;
+            max-width: 900px;
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .map-embed.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #222;
+            border-top: 6px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
             }
 
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            z-index: 2000
+        }
+
+        .overlay .box {
+            background: #25D366;
+            color: white;
+            padding: 34px;
+            border-radius: 14px;
+            text-align: center;
+            max-width: 420px;
+            animation: popIn 0.5s ease-out;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (max-width:768px) {
             .hero h2 {
-                font-size: 2.5em;
+                font-size: 2.4em;
             }
 
-            .hero p {
-                font-size: 1.2em;
+            .hero {
+                height: 60vh;
+                margin-top: 64px;
             }
 
-            section {
-                padding: 60px 15px;
+            .gallery-grid img {
+                height: 200px;
             }
 
-            #services h2,
-            #gallery h2,
-            footer h2 {
-                font-size: 2.2em;
+            .booking-wrap {
+                padding: 30px;
+            }
+
+            .booking-wrap input,
+            .booking-wrap select,
+            .booking-wrap button {
+                padding: 16px;
+            }
+
+            .btn {
+                padding: 14px 28px;
             }
 
             .social-links a {
-                width: 55px;
-                height: 55px;
+                width: 48px;
+                height: 48px;
+            }
+
+            .services-grid,
+            .women-grid {
+                gap: 18px;
+            }
+
+            .map-embed {
+                height: 350px;
             }
         }
     </style>
 </head>
 
 <body>
+    <div class="page-loader" id="pageLoader">
+        <div class="spinner"></div>
+    </div>
+
     <header>
         <h1>Asnath</h1>
-        <p>Premium Men's Grooming Experience</p>
+        <p>Premium Unisex Hair Experience</p>
     </header>
 
     <div class="hero">
-        <div class="hero-content">
+        <div class="hero-content reveal">
             <h2>Elevate Your Style</h2>
-            <p>Expert barbers crafting sharp, modern looks for the confident man. Specializing in fades, waves, curls,
-                and precision grooming.</p>
-            <a href="#contact" class="btn">Book Now</a>
+            <p>Sharp precision grooming for him • Elegant cuts, styling & wigs for her</p>
+            <br>
+            <a href="#booking" class="btn">Book Appointment</a>
         </div>
     </div>
 
-    <section id="services">
-        <h2>Our Services</h2>
+    <section id="services" class="reveal">
+        <h2>Men's Services</h2>
         <div class="services-grid">
-            <div class="service-item">
+            <div class="service-item reveal">
                 <h3>Precision Fade</h3>
-                <p>Low, mid, or high – flawless tapers and skin fades tailored to your features.</p>
+                <p>Low, mid, or high – flawless tapers.</p>
+                <p class="service-price">From R80</p>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <h3>Waves & Texture</h3>
-                <p>360 waves, curly crops, and afro shapes with expert enhancement.</p>
+                <p>360 waves, curly crops, and afro shapes.</p>
+                <p class="service-price">From R75</p>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <h3>Beard Grooming</h3>
-                <p>Sharp line-ups, trims, and full beard sculpting for a polished finish.</p>
+                <p>Line-ups, trims, and full beard sculpting.</p>
+                <p class="service-price">From R45</p>
             </div>
-            <div class="service-item">
+            <div class="service-item reveal">
                 <h3>Full Experience</h3>
-                <p>Haircut + beard + hot towel shave for the ultimate refresh.</p>
+                <p>Haircut + beard + hot towel shave.</p>
+                <p class="service-price">From R150</p>
             </div>
         </div>
     </section>
 
-    <section id="gallery">
+    <section id="women" class="reveal">
+        <h2>Women's Salon & Wigs</h2>
+        <p>Precision cuts, styling, and high-quality wigs — curated for style and confidence.</p>
+
+        <div class="women-grid">
+            <div class="women-item reveal">
+                <img loading="lazy"
+                    src="https://i0.wp.com/therighthairstyles.com/wp-content/uploads/2024/06/1-cornrows-and-braided-pony-black-hair.jpg?resize=1080%2C1350&ssl=1"
+                    alt="Women's Cut">
+                <h3>Women's Cut</h3>
+                <p>Custom wash, cut & finish.</p>
+                <strong>From R100</strong>
+            </div>
+            <div class="women-item reveal">
+                <img loading="lazy" src="https://image.curlsqueen.com/upload/assets/20220624/16560618979236.png"
+                    alt="Styling & Blowout">
+                <h3>Styling & Blowout</h3>
+                <p>Bridal, event styling, and daily looks.</p>
+                <strong>From R200</strong>
+            </div>
+            <div class="women-item reveal">
+                <img loading="lazy"
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=1200&q=80&auto=format&fit=crop"
+                    alt="Lace Front Wig">
+                <h3>Lace Front Wig</h3>
+                <p>Premium synthetic lace front.</p>
+                <strong>R200</strong>
+            </div>
+            <div class="women-item reveal">
+                <img loading="lazy"
+                    src="https://images.openai.com/thumbnails/url/-p105HicDcnbCoIwGADgJzIplQ4Q4QzWAaVQiLoJd3A5dU73D7Wn6nV6m_puv-_nBaDNxnW5ov2kgTMHiPJmwkAOJZ3RtnHNq9W6VGLXbf-3CRO2xjR9FHh5qSO1kIWygNvGk9PwLCReZzXySGTIqfX44F87ETv2ENwRMTJ7D0IAG48MJ01yhqXlfYrIquPZkbJ6RBIqn5k8PFfzuG6AhF1aQrAXt0yrCll7_QEpeUE2"
+                    alt="Human Hair Wig">
+                <h3>Human Hair Wig</h3>
+                <p>100% human hair — cut & color friendly.</p>
+                <strong>R200</strong>
+            </div>
+            <div class="women-item reveal">
+                <img loading="lazy"
+                    src="https://images.openai.com/thumbnails/url/0CrhVXicDclbCoJAFADQFY06SGFChBVKlpYPTOcn0hHH1HHSm49207LaTZ3f8_0wANHrspzzrJsF5BRByhWp6OEOZSZlbSP3rBWi5MXmuf6fbrh0ZWV-GIf5icOIqkLbpxGZGEZzGlqHscSmahKW4CBxd-bgnTG61o5GC6ei7kDelF8eEDF19JtoKBcTc-2b_6o76z2qdt5uayIsvDS8YwAxUn4oFDns"
+                    alt="Synthetic Wig">
+                <h3>Synthetic Wig</h3>
+                <p>Lightweight and affordable.</p>
+                <strong>R100</strong>
+            </div>
+            <div class="women-item reveal">
+                <img loading="lazy"
+                    src="https://theshaderoom.com/wp-content/uploads/2021/05/Braided-Bob-with-Cute-Beads.jpg"
+                    alt="Color & Treatments">
+                <h3>Color & Treatments</h3>
+                <p>Balayage, glossing and treatments.</p>
+                <strong>From R150</strong>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="reveal">
         <h2>Style Inspiration</h2>
-        <p>Discover trending cuts: low tapers, burst fades, curly afros, waves, mohawks, and more – all on Black hair
-            textures.</p>
+        <p>Discover trending cuts and looks from our clients.</p>
         <div class="gallery-grid">
-            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/03/Afro-Taper-Fade-Haircuts-For-Men.jpg"
-                alt="Afro Taper Fade">
-            <img src="https://www.barberstake.com/wp-content/uploads/2025/02/Stylish-Black-Mens-Fade-Haircuts.jpg"
-                alt="Stylish Fade">
-            <img src="http://swankymalone.com/cdn/shop/articles/Swanky-Malone---Low-Taper-Fade-Blog_3324f34e-7415-4c7d-ad0f-0dca24ef79a4.jpg?v=1765230894"
-                alt="Low Taper Fade">
-            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/03/Afro-Fade-Haircuts.jpg.webp"
-                alt="Afro Fade">
-            <img src="https://lowfade.us/wp-content/uploads/2025/11/Low-taper-fade-curly-hair-men-1-1024x597.webp"
-                alt="Curly Low Taper Fade">
-            <img src="https://www.shutterstock.com/image-photo/black-man-portrait-eyes-haircut-600nw-2450797117.jpg"
-                alt="Portrait Fade">
-            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/04/Burst-Fade-Mohawk.jpg.webp"
-                alt="Burst Fade Mohawk">
-            <img src="https://www.menshairstylestoday.com/wp-content/uploads/2024/06/Low-Taper-Fade-Haircut.jpg.webp"
-                alt="Low Taper Fade">
-            <img src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/1154290/biz_photo/bb62f905cee44c678b9c7b3c1ce79a-losblendsz-biz-photo-b8138f71391f4530a1ee5ebe748d2b-booksy.jpeg?size=640x427"
-                alt="Professional Cut">
-            <img src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/455288/biz_photo/c216de7d7c6541f3bb3f58d33fe947-clipman-wood-biz-photo-03c038fb4e0d46418378c9dba3affe-booksy.jpeg?size=640x427"
-                alt="Barber in Action">
-            <img src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/1362783/biz_photo/a29076bb21a34b1d922b813596257d-mirabal-the-barber-at-aps-barb-biz-photo-76f2ee000faf461ab90c66bdc62fab-booksy.jpeg?size=640x427"
-                alt="Clean Line Up">
+            <img loading="lazy" src="WhatsApp%20Image%202025-12-23%20at%2014.35.45.jpeg" alt="gallery1">
+            <img loading="lazy" src="WhatsApp%20Image%202025-12-23%20at%2014.35.47.jpeg" alt="gallery2">
+            <img loading="lazy" src="WhatsApp%20Image%202025-12-23%20at%2014.35.48.jpeg" alt="gallery3">
+            <img loading="lazy" src="WhatsApp%20Image%202025-12-23%20at%2014.35.48%20%281%29.jpeg" alt="gallery4">
+            <img loading="lazy" src="WhatsApp%20Image%202025-12-23%20at%2014.35.48%20%282%29.jpeg" alt="gallery5">
+            <img loading="lazy" src="WhatsApp%20Image%202025-12-23%20at%2014.35.49.jpeg" alt="gallery6">
         </div>
     </section>
 
     <footer id="contact">
         <h2>Get in Touch</h2>
         <div class="contact-info">
+            <p>Phone: <a href="tel:+27695798045" style="color:#d4af37; text-decoration:none">+27 69 579 8045</a></p>
+            <p>Opening Hours: Monday - Saturday: 9:00 AM - 8:00 PM | Sunday: 10:00 AM - 8:00 PM</p>
+            <p>Address: 245 Voortrekker Rd, Cape Town, Western Cape</p>
+        </div>
 
-            <p>Phone: <a href="tel:+27 69 579 8045" style="color: #d4af37; text-decoration: none;">+27 69 579 8045</a>
-            </p>
-            <p>Address: 245 R102, Cape Town </p>
+        <div class="social-links reveal">
+            <a href="https://wa.me/27695798045" target="_blank" aria-label="WhatsApp"><img loading="lazy"
+                    src="https://e7.pngegg.com/pngimages/742/931/png-clipart-whatsapp-whatsup-gold-android-mobile-phones-whatsapp-user-symbol.png"
+                    alt="WhatsApp"></a>
+            <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><img loading="lazy"
+                    src="https://i.pinimg.com/736x/18/24/dd/1824dde20fa6beaf1c39abce41d96cab.jpg" alt="Instagram"></a>
+            <a href="https://www.facebook.com/jackbeauwer.beauwer" target="_blank" aria-label="Facebook"><img
+                    loading="lazy"
+                    src="https://media.licdn.com/dms/image/v2/D5622AQGEvChYG66Zug/feedshare-shrink_800/feedshare-shrink_800/0/1704710063033?e=2147483647&v=beta&t=M1eW9YblFOUZkyhNsvFnzYf1n9P2-4LeflZFiuep_n8"
+                    alt="Facebook"></a>
         </div>
-        <div class="social-links">
-            <a href="https://www.instagram.com/jackbeauwer6/" target="_blank" aria-label="Instagram">
-                <img src="https://i.pinimg.com/736x/a3/91/bc/a391bca4494d0bf1337a90561ed97e65.jpg" alt="Instagram">
-            </a>
-            <a href="https://www.facebook.com/jackbeauwer.beauwer" target="_blank" aria-label="Facebook">
-                <img src="https://i.pinimg.com/736x/a3/91/bc/a391bca4494d0bf1337a90561ed97e65.jpg" alt="Facebook">
-            </a>
+
+        <div class="map-embed reveal">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.500000000000!2d18.512000!3d-33.910000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5d5e5e5e5e5e%3A0xexample!2s245%20Voortrekker%20Rd%2C%20Maitland%2C%20Cape%20Town!5e0!3m2!1sen!2sza!4v1700000000000"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <p style="margin-top: 40px; font-size: 0.9em; color: #666;">&copy; 2025 Asnath Men's Hair Salon. All rights
+
+        <p style="margin-top:40px; font-size:0.9em; color:#666">&copy; 2025 Asnath Premium Hair Salon. All rights
             reserved.</p>
     </footer>
+
+    <!-- Booking Section - Now at the very bottom -->
+    <section id="booking">
+        <h2 style="color:#d4af37; margin-bottom:20px;">Book Your Appointment</h2>
+        <p style="margin-bottom:40px; max-width:600px; margin-left:auto; margin-right:auto;">Secure your spot today –
+            select a service, date & time. We'll confirm via WhatsApp!</p>
+        <div class="booking-wrap reveal">
+            <form id="bookingForm">
+                <input id="name" placeholder="Your name" required />
+                <input id="phone" placeholder="Your phone number (WhatsApp)" required />
+                <select id="service" required>
+                    <option value="">Select a service</option>
+                    <option>Precision Fade</option>
+                    <option>Waves & Texture</option>
+                    <option>Beard Grooming</option>
+                    <option>Full Experience</option>
+                    <option>Women's Cut</option>
+                    <option>Women's Styling</option>
+                    <option>Wig Purchase</option>
+                    <option>Color & Treatments</option>
+                </select>
+                <input id="date" type="date" required />
+                <input id="time" type="time" required />
+                <div class="error" id="error"></div>
+                <button type="submit">Preview Booking</button>
+            </form>
+
+            <div class="preview" id="preview" style="display:none;">
+                <h3>Confirm Your Booking</h3>
+                <p id="previewText" style="white-space:pre-wrap; text-align:left"></p>
+                <div style="display:flex; gap:10px; margin-top:20px">
+                    <button id="confirmBtn" style="flex:1">Send on WhatsApp</button>
+                    <button id="editBtn" style="flex:1; background:#333; color:#fff">Edit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="overlay" id="thankyouOverlay">
+        <div class="box">
+            <h2>Thank You! 🎉</h2>
+            <p>Your booking request has been sent. We'll confirm shortly!</p>
+            <div style="margin-top:20px">
+                <button id="closeOverlay"
+                    style="padding:12px 20px; border-radius:10px; border:none; background:#111; color:#fff">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+                document.getElementById('pageLoader').classList.add('hidden');
+            });
+
+            const form = document.getElementById('bookingForm');
+            const previewBox = document.getElementById('preview');
+            const previewText = document.getElementById('previewText');
+            const confirmBtn = document.getElementById('confirmBtn');
+            const editBtn = document.getElementById('editBtn');
+            const errorDiv = document.getElementById('error');
+            const overlay = document.getElementById('thankyouOverlay');
+            const closeOverlay = document.getElementById('closeOverlay');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+
+                errorDiv.textContent = '';
+
+                if (!name || !phone || !service || !date || !time) {
+                    errorDiv.textContent = 'Please fill in all fields.';
+                    return;
+                }
+
+                if (!/^\d{9,15}$/.test(phone.replace(/\D/g, ''))) {
+                    errorDiv.textContent = 'Enter a valid phone number.';
+                    return;
+                }
+
+                const previewMessage = `📅 Appointment Details:\nName: ${name}\nPhone: ${phone}\nService: ${service}\nDate: ${date}\nTime: ${time}`;
+                previewText.textContent = previewMessage;
+
+                form.style.display = 'none';
+                previewBox.style.display = 'block';
+            });
+
+            confirmBtn.onclick = function () {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const service = document.getElementById('service').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+
+                const message = `📅 Appointment Details:\nName: ${name}\nPhone: ${phone}\nService: ${service}\nDate: ${date}\nTime: ${time}`;
+                const ownerNumber = '27695798045';
+                const waUrl = `https://wa.me/${ownerNumber}?text=${encodeURIComponent(message)}`;
+
+                window.open(waUrl, '_blank');
+                overlay.style.display = 'flex';
+            };
+
+            editBtn.onclick = function () {
+                previewBox.style.display = 'none';
+                form.style.display = 'block';
+            };
+
+            closeOverlay.onclick = function () {
+                overlay.style.display = 'none';
+                form.reset();
+                previewBox.style.display = 'none';
+                form.style.display = 'block';
+            };
+
+            // Intersection Observer for reveals & header
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal, .service-item, .women-item, .gallery-grid img, header, .hero-content, .map-embed, .booking-wrap').forEach(el => observer.observe(el));
+        })();
+    </script>
 </body>
 
 </html>
